@@ -1,0 +1,113 @@
+import type { Metadata } from "next";
+import { Cross, Heart, BookOpen } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about Jesus Convoy – our mission, vision, and leadership team.",
+};
+
+const beliefs = [
+  { icon: "✝️", title: "The Trinity", desc: "We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit." },
+  { icon: "📖", title: "The Bible", desc: "We believe the Bible is the inspired, infallible Word of God and our supreme authority." },
+  { icon: "✨", title: "Salvation", desc: "We believe salvation is by grace through faith in Jesus Christ alone." },
+  { icon: "🕊️", title: "The Holy Spirit", desc: "We believe in the present ministry of the Holy Spirit who indwells every believer." },
+  { icon: "🌍", title: "The Church", desc: "We believe the Church is the Body of Christ, called to make disciples of all nations." },
+  { icon: "👑", title: "Christ Returns", desc: "We believe in the literal, physical return of Jesus Christ to establish His kingdom." },
+];
+
+const leaders = [
+  { name: "Pastor John Convoy", role: "Senior Pastor", img: "", desc: "A devoted shepherd with over 20 years of ministry experience, committed to raising a generation of world-changers." },
+  { name: "Pastor Grace Convoy", role: "Associate Pastor", img: "", desc: "Passionate about discipleship and women's ministry, leading with grace and wisdom." },
+  { name: "Deacon Samuel Ade", role: "Head of Administration", img: "", desc: "A servant leader overseeing church operations and growing ministry impact." },
+];
+
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen bg-navy-950">
+      {/* Header */}
+      <section className="relative py-24 px-6 text-center overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold-500/10 rounded-full blur-3xl" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-gold-400 text-sm font-medium mb-6">
+            <Cross className="w-3 h-3" /> About Us
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            Our <span className="gradient-text">Story</span>
+          </h1>
+          <p className="text-slate-400 text-xl leading-relaxed">
+            Jesus Convoy was founded on the conviction that the Church is God&apos;s primary vehicle
+            for advancing His Kingdom on earth. We are a community rooted in love, driven by faith,
+            and committed to transforming lives.
+          </p>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="section-padding">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="glass rounded-3xl p-8 border-l-4 border-gold-500">
+            <div className="w-12 h-12 gradient-gold rounded-xl flex items-center justify-center mb-4">
+              <Cross className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-2xl font-black text-white mb-3">Our Mission</h2>
+            <p className="text-slate-400 leading-relaxed">
+              To make devoted followers of Jesus Christ by proclaiming the Gospel, discipling
+              believers, and demonstrating God&apos;s love to our community and the world.
+            </p>
+          </div>
+          <div className="glass rounded-3xl p-8 border-l-4 border-gold-500">
+            <div className="w-12 h-12 gradient-gold rounded-xl flex items-center justify-center mb-4">
+              <BookOpen className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-2xl font-black text-white mb-3">Our Vision</h2>
+            <p className="text-slate-400 leading-relaxed">
+              To be a flourishing, Spirit-filled church that impacts every sphere of society —
+              families, businesses, arts, government, and beyond — for the glory of God.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Beliefs */}
+      <section className="section-padding bg-navy-900/40">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-2">What We Believe</p>
+            <h2 className="text-4xl font-black text-white">Core Beliefs</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {beliefs.map((b) => (
+              <div key={b.title} className="glass rounded-2xl p-6 card-hover">
+                <span className="text-3xl mb-4 block">{b.icon}</span>
+                <h3 className="text-white font-bold text-lg mb-2">{b.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-2">Meet</p>
+            <h2 className="text-4xl font-black text-white">Our Leadership</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {leaders.map((l) => (
+              <div key={l.name} className="glass rounded-2xl p-8 text-center card-hover">
+                <div className="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-gold-500/20">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-white font-bold text-xl mb-1">{l.name}</h3>
+                <p className="text-gold-400 text-sm font-medium mb-3">{l.role}</p>
+                <p className="text-slate-400 text-sm leading-relaxed">{l.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
