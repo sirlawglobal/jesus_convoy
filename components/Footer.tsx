@@ -93,7 +93,7 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
-                <span>Lagos, Nigeria</span>
+                <span>Akure, Ondo State, Nigeria</span>
               </div>
             </div>
           </div>
