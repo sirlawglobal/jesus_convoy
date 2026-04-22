@@ -80,7 +80,8 @@ export const ContactSchema = z.object({
 export const DonationSchema = z.object({
   donorName: z.string().min(2),
   email: z.string().email(),
-  amount: z.number().min(100),
+  amount: z.number().min(1),
+  currency: z.enum(["NGN", "USD"]),
   category: z.enum(["tithe", "offering", "donation"]),
   reference: z.string(),
 });

@@ -83,7 +83,7 @@ export default function ContactPage() {
         {/* Info */}
         <div className="space-y-6">
           {[
-            { icon: MapPin, title: "Visit Us", content: "123 Church Street, Lagos, Nigeria" },
+            { icon: MapPin, title: "Visit Us", content: "NTA,Akure, Nigeria" },
             { icon: Phone, title: "Call Us", content: "+234 800 000 0000" },
             { icon: Mail, title: "Email Us", content: "info@jesusconvoy.org" },
             { icon: Clock, title: "Service Times", content: "Sunday: 8am & 10:30am\nWednesday: 6pm" },
@@ -102,7 +102,7 @@ export default function ContactPage() {
           {/* Map embed */}
           <div className="glass rounded-2xl overflow-hidden h-48">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46258812947!2d3.1438710!3d6.5243793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1713364532001!5m2!1sen!2sng"
+              src="https://www.google.com/maps?q=Akure%2C%20Ondo%20State%2C%20Nigeria&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

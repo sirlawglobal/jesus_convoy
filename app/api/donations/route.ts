@@ -11,8 +11,14 @@ export async function GET(req: NextRequest) {
 
   await connectDB();
   const donations = await Donation.find({ status: "success" }).sort({ createdAt: -1 }).lean();
-  const total = donations.reduce((sum, d) => sum + d.amount, 0);
-  return Response.json({ donations, total });
+  
+  // Calculate totals per currency
+  const totals = donations.reduce((acc: Record<string, number>, d) => {
+    acc[d.currency] = (acc[d.currency] || 0) + d.amount;
+    return acc;
+  }, {});
+
+  return Response.json({ donations, totals });
 }
 
 export async function POST(req: NextRequest) {

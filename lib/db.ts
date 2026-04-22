@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+// Import all models to ensure they are registered
+import "@/models/User";
+import "@/models/Ministry";
+import "@/models/BlogPost";
+import "@/models/Event";
+import "@/models/Sermon";
+import "@/models/Announcement";
+import "@/models/Donation";
+import "@/models/ContactMessage";
+import "@/models/Settings";
+
 const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {

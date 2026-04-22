@@ -14,7 +14,19 @@ export default function BlogPage() {
   useEffect(() => {
     const url = `/api/blog${category ? `?category=${category}` : ""}`;
     setLoading(true);
-    fetch(url).then((r) => r.json()).then((d) => { setPosts(d.posts ?? []); setLoading(false); });
+    fetch(url)
+      .then((r) => {
+        if (!r.ok) throw new Error("Failed to fetch posts");
+        return r.json();
+      })
+      .then((d) => {
+        setPosts(d.posts ?? []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Blog fetch error:", err);
+        setLoading(false);
+      });
   }, [category]);
 
   const categories = [...new Set(posts.map((p) => p.category))];

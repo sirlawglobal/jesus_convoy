@@ -6,27 +6,32 @@ import { slugify } from "@/lib/utils";
 import BlogPost from "@/models/BlogPost";
 
 export async function GET(req: NextRequest) {
-  await connectDB();
-  const url = new URL(req.url);
-  const auth = getAuthFromRequest(req);
-  const category = url.searchParams.get("category");
-  const page = parseInt(url.searchParams.get("page") ?? "1");
-  const limit = parseInt(url.searchParams.get("limit") ?? "10");
+  try {
+    await connectDB();
+    const url = new URL(req.url);
+    const auth = getAuthFromRequest(req);
+    const category = url.searchParams.get("category");
+    const page = parseInt(url.searchParams.get("page") ?? "1");
+    const limit = parseInt(url.searchParams.get("limit") ?? "10");
 
-  const filter: Record<string, unknown> = auth?.role === "admin" ? {} : { published: true };
-  if (category) filter.category = { $regex: category, $options: "i" };
+    const filter: Record<string, unknown> = auth?.role === "admin" ? {} : { published: true };
+    if (category) filter.category = { $regex: category, $options: "i" };
 
-  const [posts, total] = await Promise.all([
-    BlogPost.find(filter)
-      .populate("author", "name avatar")
-      .sort({ publishedAt: -1, createdAt: -1 })
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .lean(),
-    BlogPost.countDocuments(filter),
-  ]);
+    const [posts, total] = await Promise.all([
+      BlogPost.find(filter)
+        .populate("author", "name avatar")
+        .sort({ publishedAt: -1, createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .lean(),
+      BlogPost.countDocuments(filter),
+    ]);
 
-  return Response.json({ posts, total, page, limit });
+    return Response.json({ posts, total, page, limit });
+  } catch (err) {
+    console.error("[API/BLOG/GET]", err);
+    return Response.json({ error: "Server error", details: err instanceof Error ? err.message : String(err) }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

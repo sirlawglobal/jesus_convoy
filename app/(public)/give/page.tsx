@@ -14,15 +14,24 @@ const CATEGORIES = [
 type Category = (typeof CATEGORIES)[number]["value"];
 
 export default function GivePage() {
-  const [form, setForm] = useState({ donorName: "", email: "", amount: "", category: "tithe" as Category });
+  const [form, setForm] = useState({
+    donorName: "",
+    email: "",
+    amount: "",
+    category: "tithe" as Category,
+    currency: "NGN" as "NGN" | "USD"
+  });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const currencySymbol = form.currency === "NGN" ? "₦" : "$";
+  const minAmount = form.currency === "NGN" ? 100 : 1;
 
   async function handleGive(e: React.FormEvent) {
     e.preventDefault();
     const amount = parseFloat(form.amount);
-    if (!form.donorName || !form.email || isNaN(amount) || amount < 100) {
-      return toast.error("Please fill all fields. Minimum amount is ₦100");
+    if (!form.donorName || !form.email || isNaN(amount) || amount < minAmount) {
+      return toast.error(`Please fill all fields. Minimum amount is ${currencySymbol}${minAmount}`);
     }
 
     setLoading(true);
@@ -32,7 +41,14 @@ export default function GivePage() {
     const saveRes = await fetch("/api/donations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ donorName: form.donorName, email: form.email, amount, category: form.category, reference }),
+      body: JSON.stringify({
+        donorName: form.donorName,
+        email: form.email,
+        amount,
+        category: form.category,
+        currency: form.currency,
+        reference
+      }),
     });
 
     if (!saveRes.ok) {
@@ -56,7 +72,7 @@ export default function GivePage() {
         key: PUBLIC_KEY,
         email: form.email,
         amount: amount * 100,
-        currency: "NGN",
+        currency: form.currency,
         ref: reference,
         metadata: { custom_fields: [{ display_name: "Donor", variable_name: "donor", value: form.donorName }] },
         callback: async (response: { reference: string }) => {
@@ -106,6 +122,20 @@ export default function GivePage() {
               <Heart className="w-6 h-6 text-gold-400" /> Make a Gift
             </h2>
 
+            {/* Currency selector */}
+            <div className="flex gap-2 mb-6 p-1 glass rounded-2xl w-fit">
+              {["NGN", "USD"].map((curr) => (
+                <button
+                  key={curr}
+                  type="button"
+                  onClick={() => setForm({ ...form, currency: curr as "NGN" | "USD", amount: "" })}
+                  className={`px-6 py-2 rounded-xl font-bold transition-all ${form.currency === curr ? "gradient-gold text-navy-950" : "text-slate-400 hover:text-white"}`}
+                >
+                  {curr}
+                </button>
+              ))}
+            </div>
+
             {/* Category selector */}
             <div className="grid grid-cols-3 gap-3 mb-6">
               {CATEGORIES.map((c) => (
@@ -131,16 +161,16 @@ export default function GivePage() {
                 <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="john@example.com" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
               </div>
               <div>
-                <label className="text-slate-400 text-sm mb-1 block">Amount (₦) *</label>
-                <input required type="number" min="100" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} placeholder="5000" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
+                <label className="text-slate-400 text-sm mb-1 block">Amount ({currencySymbol}) *</label>
+                <input required type="number" min={minAmount} value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} placeholder={form.currency === "NGN" ? "5000" : "50"} className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
               </div>
 
               {/* Quick amounts */}
               <div className="flex gap-2 flex-wrap">
-                {[1000, 2000, 5000, 10000, 20000, 50000].map((a) => (
+                {(form.currency === "NGN" ? [1000, 2000, 5000, 10000, 20000, 50000] : [10, 20, 50, 100, 200, 500]).map((a) => (
                   <button key={a} type="button" onClick={() => setForm({ ...form, amount: String(a) })}
                     className="px-3 py-1 glass rounded-lg text-xs text-slate-300 hover:text-gold-400 hover:border-gold-500/30 transition-all">
-                    ₦{a.toLocaleString()}
+                    {currencySymbol}{a.toLocaleString()}
                   </button>
                 ))}
               </div>
