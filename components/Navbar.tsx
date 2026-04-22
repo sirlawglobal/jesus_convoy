@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Cross, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const publicNav = [
   { label: "Home", href: "/" },
@@ -33,8 +33,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30">
-              <Cross className="w-4 h-4 text-white" />
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shadow-lg shadow-gold-500/20 border border-white/10 group-hover:border-gold-500/50 transition-all">
+              <img src="/jc-logo.jpeg" alt="Jesus Convoy Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-bold text-white text-lg tracking-tight">
               Jesus <span className="gradient-text">Convoy</span>

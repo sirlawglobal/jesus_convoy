@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Cross, Share2, Video, Globe, Mail, Phone, MapPin } from "lucide-react";
+import { Share2, Video, Globe, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center">
-                <Cross className="w-4 h-4 text-white" />
+            <Link href="/" className="flex items-center gap-2 mb-4 group">
+              <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shadow-lg shadow-gold-500/20 border border-white/10 group-hover:border-gold-500/50 transition-all">
+                <img src="/jc-logo.jpeg" alt="Jesus Convoy Logo" className="w-full h-full object-cover" />
               </div>
               <span className="font-bold text-white text-xl">
                 Jesus <span className="gradient-text">Convoy</span>

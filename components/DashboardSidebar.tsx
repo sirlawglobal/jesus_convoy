@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-  Cross, LayoutDashboard, Users, Building2, BookOpen, Calendar,
+  LayoutDashboard, Users, Building2, BookOpen, Calendar,
   Newspaper, Megaphone, HandCoins, MessageSquare, Settings,
   LogOut, Menu, X, ChevronRight, User
 } from "lucide-react";
@@ -67,9 +67,9 @@ export default function DashboardSidebar() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-white/10">
-        <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-gold-500/30">
-          <Cross className="w-4 h-4 text-white" />
+      <div className="flex items-center gap-3 px-4 py-5 border-b border-white/10 group">
+        <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shadow-lg shadow-gold-500/20 border border-white/10 flex-shrink-0">
+          <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
         </div>
         {!collapsed && (
           <span className="font-bold text-white text-sm">
@@ -131,7 +131,9 @@ export default function DashboardSidebar() {
           href="/"
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all"
         >
-          <Cross className="w-4 h-4 flex-shrink-0" />
+          <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+            <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+          </div>
           {!collapsed && <span>Public Site</span>}
         </Link>
         <button
@@ -157,8 +159,8 @@ export default function DashboardSidebar() {
       {/* Mobile topbar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 glass border-b border-white/10 flex items-center justify-between px-4 h-14">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 gradient-gold rounded-full flex items-center justify-center">
-            <Cross className="w-3.5 h-3.5 text-white" />
+          <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-white/10">
+            <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-bold text-white text-sm">Jesus Convoy</span>
         </Link>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cross, Heart, BookOpen } from "lucide-react";
+import { Heart, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -16,9 +16,9 @@ const beliefs = [
 ];
 
 const leaders = [
-  { name: "Pastor John Convoy", role: "Senior Pastor", img: "", desc: "A devoted shepherd with over 20 years of ministry experience, committed to raising a generation of world-changers." },
-  { name: "Pastor Grace Convoy", role: "Associate Pastor", img: "", desc: "Passionate about discipleship and women's ministry, leading with grace and wisdom." },
-  { name: "Deacon Samuel Ade", role: "Head of Administration", img: "", desc: "A servant leader overseeing church operations and growing ministry impact." },
+  { name: "Pastor Anthony Akande", role: "Senior Pastor", img: "", desc: "A devoted shepherd with over 20 years of ministry experience, committed to raising a generation of world-changers." },
+  { name: "Pastor Mrs Akande", role: "Associate Pastor", img: "", desc: "Passionate about discipleship and women's ministry, leading with grace and wisdom." },
+  { name: "Deacon XXX XXX", role: "Head of Administration", img: "", desc: "A servant leader overseeing church operations and growing ministry impact." },
 ];
 
 export default function AboutPage() {
@@ -29,7 +29,10 @@ export default function AboutPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold-500/10 rounded-full blur-3xl" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-gold-400 text-sm font-medium mb-6">
-            <Cross className="w-3 h-3" /> About Us
+            <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+              <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+            </div>
+            About Us
           </div>
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
             Our <span className="gradient-text">Story</span>
@@ -46,8 +49,8 @@ export default function AboutPage() {
       <section className="section-padding">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="glass rounded-3xl p-8 border-l-4 border-gold-500">
-            <div className="w-12 h-12 gradient-gold rounded-xl flex items-center justify-center mb-4">
-              <Cross className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center mb-4 border border-white/10 shadow-lg shadow-gold-500/20">
+              <img src="/jc-logo.jpeg" alt="Mission Logo" className="w-full h-full object-cover" />
             </div>
             <h2 className="text-2xl font-black text-white mb-3">Our Mission</h2>
             <p className="text-slate-400 leading-relaxed">

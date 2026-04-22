@@ -3,7 +3,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
-import { Cross, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 
 function LoginForm() {
@@ -105,9 +105,9 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-10 h-10 gradient-gold rounded-full flex items-center justify-center shadow-xl shadow-gold-500/30">
-              <Cross className="w-5 h-5 text-white" />
+          <Link href="/" className="inline-flex items-center gap-2 group">
+            <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-xl shadow-gold-500/20 border border-white/10 group-hover:border-gold-500/50 transition-all">
+              <img src="/jc-logo.jpeg" alt="Jesus Convoy Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-bold text-white text-2xl">
               Jesus <span className="gradient-text">Convoy</span>

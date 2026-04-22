@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, Heart, Users, Calendar, ArrowRight, Cross, Star } from "lucide-react";
+import { Play, Heart, Users, Calendar, ArrowRight, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const fadeUp = {
@@ -44,7 +44,9 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-gold-400 text-sm font-medium mb-8"
           >
-            <Cross className="w-3 h-3" />
+            <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+              <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+            </div>
             Welcome to Jesus Convoy
           </motion.div>
 
