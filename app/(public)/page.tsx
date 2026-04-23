@@ -54,11 +54,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-5xl md:text-7xl font-black text-white leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6"
           >
             Advancing God&apos;s{" "}
             <span className="gradient-text">Kingdom</span>
-            <br />Together
+            <br /> Together
           </motion.h1>
 
           <motion.p
@@ -75,25 +75,25 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
               href="/live"
-              className="flex items-center gap-2 px-8 py-4 gradient-gold rounded-2xl font-bold text-navy-950 hover:opacity-90 transition-opacity shadow-2xl shadow-gold-500/30"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 gradient-gold rounded-2xl font-bold text-navy-950 hover:opacity-90 transition-opacity shadow-2xl shadow-gold-500/30"
             >
               <Play className="w-5 h-5" />
               Watch Live
             </Link>
             <Link
               href="/give"
-              className="flex items-center gap-2 px-8 py-4 glass rounded-2xl font-semibold text-white hover:border-gold-500/40 transition-all"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 glass rounded-2xl font-semibold text-white hover:border-gold-500/40 transition-all"
             >
               <Heart className="w-5 h-5 text-gold-400" />
               Give Online
             </Link>
             <Link
               href="/about"
-              className="flex items-center gap-2 px-8 py-4 text-slate-300 hover:text-white font-medium transition-colors"
+              className="flex items-center gap-2 px-8 py-2 text-slate-300 hover:text-white font-medium transition-colors"
             >
               Join Us <ArrowRight className="w-4 h-4" />
             </Link>
@@ -141,17 +141,17 @@ export default function HomePage() {
 
       {/* ── Announcements ── */}
       {announcements.length > 0 && (
-        <section className="py-8 px-6">
+        <section className="py-8 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="glass rounded-2xl p-6 border-l-4 border-gold-500">
-              <p className="text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2">
-                <Star className="w-3 h-3" /> Latest Announcements
+            <div className="glass rounded-3xl p-6 sm:p-8 border-l-4 border-gold-500">
+              <p className="text-gold-400 text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+                <Star className="w-4 h-4" /> Latest Announcements
               </p>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {announcements.slice(0, 2).map((a) => (
-                  <div key={a._id}>
-                    <p className="text-white font-semibold">{a.title}</p>
-                    <p className="text-slate-400 text-sm">{a.message}</p>
+                  <div key={a._id} className="border-b border-white/5 last:border-0 pb-4 last:pb-0">
+                    <p className="text-white font-bold text-lg mb-1">{a.title}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed">{a.message}</p>
                   </div>
                 ))}
               </div>

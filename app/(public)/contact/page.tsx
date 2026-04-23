@@ -31,9 +31,9 @@ export default function ContactPage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-[500px] h-[300px] bg-gold-500/8 rounded-full blur-3xl" />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 px-6">
           <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-3">Get In Touch</p>
-          <h1 className="text-5xl font-black text-white mb-4">Contact <span className="gradient-text">Us</span></h1>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">Contact <span className="gradient-text">Us</span></h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">We&apos;d love to hear from you. Reach out with any questions or prayer requests.</p>
         </div>
       </section>
@@ -53,23 +53,23 @@ export default function ContactPage() {
             <>
               <h2 className="text-white font-bold text-2xl mb-6">Send a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-slate-400 text-sm mb-1 block">Full Name *</label>
-                    <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="John Doe" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
+                    <label className="text-slate-400 text-sm mb-1.5 block ml-1">Full Name *</label>
+                    <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="John Doe" className="w-full px-4 py-3.5 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50 transition-all" />
                   </div>
                   <div>
-                    <label className="text-slate-400 text-sm mb-1 block">Email *</label>
-                    <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="john@example.com" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
+                    <label className="text-slate-400 text-sm mb-1.5 block ml-1">Email *</label>
+                    <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="john@example.com" className="w-full px-4 py-3.5 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50 transition-all" />
                   </div>
                 </div>
                 <div>
-                  <label className="text-slate-400 text-sm mb-1 block">Subject *</label>
-                  <input required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="How can we help?" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50" />
+                  <label className="text-slate-400 text-sm mb-1.5 block ml-1">Subject *</label>
+                  <input required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="How can we help?" className="w-full px-4 py-3.5 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50 transition-all" />
                 </div>
                 <div>
-                  <label className="text-slate-400 text-sm mb-1 block">Message *</label>
-                  <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Your message…" className="w-full px-4 py-3 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50 resize-none" />
+                  <label className="text-slate-400 text-sm mb-1.5 block ml-1">Message *</label>
+                  <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Your message…" className="w-full px-4 py-3.5 glass rounded-xl text-white placeholder-slate-500 border border-white/10 focus:outline-none focus:border-gold-500/50 resize-none transition-all" />
                 </div>
                 <button type="submit" disabled={loading} className="w-full py-3 gradient-gold rounded-xl font-bold text-navy-950 hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2">
                   <Send className="w-4 h-4" />

@@ -9,6 +9,7 @@ import {
   Newspaper, Megaphone, HandCoins, MessageSquare, Settings,
   LogOut, Menu, X, ChevronRight, User
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Me {
   name: string; email: string; role: "admin" | "leader" | "worker"; avatar?: string;
@@ -162,22 +163,43 @@ export default function DashboardSidebar() {
           <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-white/10">
             <img src="/jc-logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <span className="font-bold text-white text-sm">Jesus Convoy</span>
+          <span className="font-bold text-white text-sm">
+            Jesus <span className="gradient-text">Convoy</span>
+          </span>
         </Link>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white p-2">
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        <button 
+          onClick={() => setMobileOpen(!mobileOpen)} 
+          className="text-white p-2 hover:bg-white/5 rounded-lg transition-colors"
+        >
+          {mobileOpen ? <X className="w-5 h-5 text-gold-400" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile drawer */}
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-30">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 bottom-0 w-64 bg-navy-950 border-r border-white/10 overflow-y-auto pt-14">
-            <SidebarContent />
-          </aside>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <div className="lg:hidden fixed inset-0 z-50">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-navy-950/80 backdrop-blur-sm" 
+              onClick={() => setMobileOpen(false)} 
+            />
+            <motion.aside 
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute left-0 top-0 bottom-0 w-72 bg-navy-950 border-r border-white/10 overflow-hidden flex flex-col"
+            >
+              <div className="pt-4 flex-1 overflow-y-auto">
+                <SidebarContent />
+              </div>
+            </motion.aside>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

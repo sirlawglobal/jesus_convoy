@@ -60,15 +60,15 @@ export default function LivePage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-[500px] h-[300px] bg-gold-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 px-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-red-400 text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
             Live Stream
           </div>
-          <h1 className="text-5xl font-black text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
             Watch <span className="gradient-text">Live</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
             Join us for our live service, wherever you are in the world.
           </p>
         </div>
@@ -97,21 +97,21 @@ export default function LivePage() {
         )}
 
         {/* Countdown */}
-        <div className="glass rounded-3xl p-8 text-center">
-          <p className="text-gold-400 text-sm font-semibold uppercase tracking-widest mb-6 flex items-center justify-center gap-2">
+        <div className="glass rounded-3xl p-8 sm:p-12 text-center border border-white/5">
+          <p className="text-gold-400 text-sm font-bold uppercase tracking-widest mb-8 flex items-center justify-center gap-2">
             <Clock className="w-4 h-4" /> Next Service Countdown
           </p>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
             {units.map((unit) => (
-              <div key={unit} className="glass rounded-2xl p-4">
-                <div className="text-4xl font-black text-white mb-1">
+              <div key={unit} className="glass rounded-2xl p-5 sm:p-6 border border-white/5 shadow-xl shadow-gold-500/5">
+                <div className="text-3xl sm:text-4xl font-black text-white mb-1">
                   {String(countdown[unit]).padStart(2, "0")}
                 </div>
-                <div className="text-slate-400 text-xs uppercase tracking-wider">{unit}</div>
+                <div className="text-slate-500 text-[10px] sm:text-xs uppercase font-bold tracking-widest">{unit}</div>
               </div>
             ))}
           </div>
-          <p className="text-slate-500 text-sm mt-4">Sunday, 10:30 AM WAT</p>
+          <p className="text-slate-500 text-sm mt-8 font-medium italic opacity-70">Every Sunday at 10:30 AM WAT</p>
         </div>
       </div>
     </div>

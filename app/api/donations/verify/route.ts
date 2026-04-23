@@ -28,6 +28,13 @@ export async function POST(req: NextRequest) {
   }
 
   await connectDB();
+  const existing = await Donation.findOne({ reference });
+  
+  if (existing && existing.status === "success") {
+    // Already verified via webhook
+    return Response.json({ message: "Payment already verified", data: data.data });
+  }
+
   await Donation.findOneAndUpdate({ reference }, { status: "success" });
 
   return Response.json({ message: "Payment verified", data: data.data });

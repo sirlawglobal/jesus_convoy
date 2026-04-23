@@ -20,9 +20,9 @@ export default function MinistriesPage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-[500px] h-[300px] bg-gold-500/8 rounded-full blur-3xl" />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 px-6">
           <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-3">Get Involved</p>
-          <h1 className="text-5xl font-black text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
             Our <span className="gradient-text">Ministries</span>
           </h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
@@ -44,12 +44,12 @@ export default function MinistriesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ministries.map((m) => (
               <Link key={m._id} href={`/ministries/${m._id}`}>
-                <div className="glass rounded-2xl p-6 card-hover h-full flex flex-col">
-                  <div className="w-14 h-14 gradient-gold rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-gold-500/20">
+                <div className="glass rounded-3xl p-6 sm:p-8 card-hover h-full flex flex-col border border-white/5">
+                  <div className="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center mb-6 shadow-xl shadow-gold-500/20">
                     <Users className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-white font-bold text-xl mb-2">{m.name}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed flex-1 line-clamp-3 mb-4">{m.description}</p>
+                  <h3 className="text-white font-bold text-2xl mb-3">{m.name}</h3>
+                  <p className="text-slate-400 text-base leading-relaxed flex-1 line-clamp-3 mb-6">{m.description}</p>
                   {m.leader && (
                     <div className="flex items-center gap-2 pt-4 border-t border-white/10">
                       <div className="w-7 h-7 gradient-gold rounded-full flex items-center justify-center text-white text-xs font-bold">
