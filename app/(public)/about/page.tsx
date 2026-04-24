@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heart, BookOpen } from "lucide-react";
+import { Heart, BookOpen, Globe, Users, Flame, Zap, TrendingUp, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -19,6 +19,39 @@ const leaders = [
   { name: "Pastor Anthony Akande", role: "Senior Pastor", img: "", desc: "A devoted shepherd with over 20 years of ministry experience, committed to raising a generation of world-changers." },
   { name: "Pastor Mrs Akande", role: "Associate Pastor", img: "", desc: "Passionate about discipleship and women's ministry, leading with grace and wisdom." },
   { name: "Deacon XXX XXX", role: "Head of Administration", img: "", desc: "A servant leader overseeing church operations and growing ministry impact." },
+];
+
+const visionPoints = [
+  {
+    icon: <Globe className="w-6 h-6" />,
+    title: "Apostolic Propagation",
+    desc: "To propagate the Gospel through planting, strengthening, and overseeing churches, apostolic centers, and mission outposts.",
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "Kingdom Mobilization",
+    desc: "To raise and mobilize a convoy of Kingdom Carriers, training ministers and missionaries for local and international service.",
+  },
+  {
+    icon: <Flame className="w-6 h-6" />,
+    title: "Territorial Revival",
+    desc: "To ignite and sustain territorial awakening through crusades, outreaches, home cells, and online prophetic platforms.",
+  },
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: "Supernatural Demonstration",
+    desc: "To demonstrate the power of Jesus through healing, miracles, and supernatural encounters, restoring faith in the living Christ.",
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "National Transformation",
+    desc: "To advance national transformation through influence across the Seven Mountains of society.",
+  },
+  {
+    icon: <ShieldCheck className="w-6 h-6" />,
+    title: "Raising Reformers",
+    desc: "To raise vibrant young leaders and reformers early, equipping children and teenagers who carry prophetic destiny.",
+  },
 ];
 
 export default function AboutPage() {
@@ -45,28 +78,62 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Mission Section */}
       <section className="section-padding">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="glass rounded-3xl p-8 border-l-4 border-gold-500">
-            <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center mb-4 border border-white/10 shadow-lg shadow-gold-500/20">
-              <img src="/jc-logo.jpeg" alt="Mission Logo" className="w-full h-full object-cover" />
+        <div className="max-w-4xl mx-auto">
+          <div className="glass rounded-[2rem] p-8 md:p-12 border-l-8 border-gold-500 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center mb-6 border border-white/10 shadow-xl">
+                <img src="/jc-logo.jpeg" alt="Mission Logo" className="w-full h-full object-cover" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Our Mission</h2>
+              <p className="text-slate-400 text-xl leading-relaxed">
+                To make devoted followers of Jesus Christ by proclaiming the Gospel, discipling
+                believers, and demonstrating God&apos;s love to our community and the world.
+              </p>
             </div>
-            <h2 className="text-2xl font-black text-white mb-3">Our Mission</h2>
-            <p className="text-slate-400 leading-relaxed">
-              To make devoted followers of Jesus Christ by proclaiming the Gospel, discipling
-              believers, and demonstrating God&apos;s love to our community and the world.
+          </div>
+        </div>
+      </section>
+
+      {/* Vision Section */}
+      <section className="section-padding bg-navy-900/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">
+              <BookOpen className="w-4 h-4" />
+              Vision of Jesus Convoy
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
+              Overall: <span className="gradient-text">To Make Heaven</span>
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Our vision is rooted in eternal impact, transforming territories and raising
+              a generation of Kingdom carriers across the globe.
             </p>
           </div>
-          <div className="glass rounded-3xl p-8 border-l-4 border-gold-500">
-            <div className="w-12 h-12 gradient-gold rounded-xl flex items-center justify-center mb-4">
-              <BookOpen className="w-6 h-6 text-white" />
-            </div>
-            <h2 className="text-2xl font-black text-white mb-3">Our Vision</h2>
-            <p className="text-slate-400 leading-relaxed">
-              To be a flourishing, Spirit-filled church that impacts every sphere of society —
-              families, businesses, arts, government, and beyond — for the glory of God.
-            </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visionPoints.map((point, index) => (
+              <div
+                key={index}
+                className="glass rounded-3xl p-8 border border-white/5 card-hover group relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-gold-500/10 transition-colors" />
+                <div className="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-gold-500/20 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-white">
+                    {point.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gold-400 transition-colors">
+                  {point.title}
+                </h3>
+                <p className="text-slate-400 leading-relaxed text-sm">
+                  {point.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
